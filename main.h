@@ -285,7 +285,7 @@ void print_err_noarg(info_t *inf, char *str);
 
 // startup_fd.c
 int open_fle(info_t *inf, char *nom, int silence);
-void read_startup_fd(info *inf);
+void read_startup_fd(info_t *inf);
 
 // date.c
 char *date(void);
