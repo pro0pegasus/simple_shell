@@ -76,12 +76,12 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - It populates env linked list
+ * pop_env_lst - It populates env linked list
  * @info: The structure contains potential arguments. It is used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int populate_env_list(info_t *info)
+int pop_env_lst(info_t *info)
 {
 	list_t *node = NULL;
 	size_t i;
