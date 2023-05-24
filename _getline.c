@@ -47,7 +47,7 @@ char *__read_buff(fileDBuff *fileB)
 	char buff[READ_SIZE + 1], *pe, *line;
 	ssize_t r = 0;
 
-	pe = __strchr(fileB->buff + fileB->j, '\n', fileB->leng - fileB->j);
+	pe = _strchr(fileB->buff + fileB->j, '\n', fileB->leng - fileB->j);
 	if (!fileB->leng || fileB->j >= fileB->leng || !pe)
 	{
 		while (1)
@@ -64,7 +64,7 @@ char *__read_buff(fileDBuff *fileB)
 			if (!fileB->buff)
 				return (NULL);
 			_memcpy((void *)(fileB->buff + fileB->leng), buff, r), fileB->leng += r;
-			pe = __strchr(fileB->buff + (fileB->leng - r), '\n', r);
+			pe = _strchr(fileB->buff + (fileB->leng - r), '\n', r);
 			if (pe)
 			{
 				fileB->buff[fileB->leng] = 0;
@@ -73,14 +73,14 @@ char *__read_buff(fileDBuff *fileB)
 		}
 	}
 	*pe = '\0';
-	line = malloc(1 + (pe - (fileB->buff + fileb->j)));
+	line = malloc(1 + (pe - (fileB->buff + fileB->j)));
 	if (!line)
 		return (NULL);
 	_memcpy((void *)line, fileB->buff + fileB->j, 1 + (pe - (fileB->buff + fileB->j)));
 	fileB->j = (pe - fileB->buff) + 1;
 	if (fileB->j >= fileB->leng)
 	{
-		fileB->j = file->leng = 0;
+		fileB->j = fileB->leng = 0;
 		fileB->buff = (free(fileB->buff), NULL);
 	}
 	return (line);

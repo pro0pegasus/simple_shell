@@ -16,7 +16,7 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *leng)
 	{
 		free(*buff);
 		*buff = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT, siginthandle);
 #if USE_GETLINE
 		r = getline(buff, &leng_p, stdin);
 #else
@@ -34,7 +34,7 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *leng)
 				return (parse_hdoc(inf, buff, r));
 			if (r > 0 && (*buff)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0';
+				(*buff)[r - 1] = '\0';
 				r--;
 			}
 			inf->linecountF = 1;
@@ -125,7 +125,7 @@ int _getline(info_t *inf, char **pter, size_t *leng)
 	size_t r;
 
 	(void) leng;
-	*pter = __getline(inf->startup_fd > -1 ? inf->startup_fd : inf->readfileD);
+	*pter = _getline(inf->startup_fd > -1 ? inf->startup_fd : inf->readfileD);
 	if (!*pter)
 		r = -1;
 	else
