@@ -6,7 +6,6 @@
  *
  * Return: allocated str containg hist file
  */
-
 char *get_historyf(info_t *inf)
 {
 	char *buf, *dir;
@@ -65,7 +64,7 @@ int read_hist(info_t *inf)
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buf = NULL, *filename = get_history_file(inf);
+	char *buf = NULL, *filename = get_historyf(inf);
 
 	if (!filename)
 		return (0);
