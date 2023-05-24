@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
- * get_history_file - It gets the hist file
- * @info: parameter structure
+ * get_historyf - It gets the hist file
+ * @inf: parameter structure
  *
  * Return: allocated str containg hist file
  */
 
-char *get_history_file(info_t *info)
+char *get_historyf(info_t *inf)
 {
 	char *buf, *dir;
 
-	dir = _getenv(info, "HOME=");
+	dir = _getenv(inf, "HOME=");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HDOC_FILE) + 2));
@@ -25,15 +25,15 @@ char *get_history_file(info_t *info)
 }
 
 /**
- * write_history - It creates a file, or appends to an existing file
- * @info: the parameter structure
+ * write_hist - It creates a file, or appends to an existing file
+ * @inf: the parameter structure
  *
  * Return: 1 on success, else -1
  */
-int write_history(info_t *info)
+int write_hist(info_t *inf)
 {
 	ssize_t fd;
-	char *filename = get_history_file(info);
+	char *filename = get_historyf(inf);
 	list_t *node = NULL;
 
 	/* printf("WRITE HISTORY(): [%s]\n", filename); */
@@ -44,7 +44,7 @@ int write_history(info_t *info)
 	free(filename);
 	if (fd == -1)
 		return (-1);
-	for (node = info->history; node; node = node->nxt)
+	for (node = inf->history; node; node = node->nxt)
 	{
 		_putsfd(node->str, fd);
 		_putfd('\n', fd);
@@ -55,17 +55,17 @@ int write_history(info_t *info)
 }
 
 /**
- * read_history - It reads hist from file
- * @info: parameter structure
+ * read_hist - It reads hist from file
+ * @inf: parameter structure
  *
  * Return: histcount on success, 0 otherwise
  */
-int read_history(info_t *info)
+int read_hist(info_t *inf)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buf = NULL, *filename = get_history_file(info);
+	char *buf = NULL, *filename = get_history_file(inf);
 
 	if (!filename)
 		return (0);
@@ -90,49 +90,49 @@ int read_history(info_t *info)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;
-			build_hist_lst(info, buf + last, linecount++);
+			build_hist_lst(inf, buf + last, linecount++);
 			last = i + 1;
 		}
 	if (last != i)
-		build_hist_lst(info, buf + last, linecount++);
+		build_hist_lst(inf, buf + last, linecount++);
 	free(buf);
-	info->histcount = linecount;
-	while (info->histcount-- >= INT_MAX)
-		delete_node_at_index(&(info->history), 0);
-	read_history(info);
-	return (info->histcount);
+	inf->Hcount = linecount;
+	while (info->Hcount-- >= INT_MAX)
+		del_node_ind(&(inf->history), 0);
+	read_hist(inf);
+	return (inf->Hcount);
 }
 
 /**
- * build_history_list - It adds entry to a hist linked list
- * @info: The structure contains potential args. It is used to maintain
+ * build_hist_lst - It adds entry to a hist linked list
+ * @inf: The structure contains potential args. It is used to maintain
  * @buf: buffer
  * @linecount: history linecount, histcount
  *
  * Return: Always 0
  */
-int build_history_list(info_t *info, char *buf, int linecount)
+int build_hist_lst(info_t *inf, char *buf, int linecount)
 {
 	list_t *node = NULL;
 
-	if (info->history)
-		node = info->history;
+	if (inf->history)
+		node = inf->history;
 	add_node_end(&node, buf, linecount);
 
-	if (!info->history)
-		info->history = node;
+	if (!inf->history)
+		inf->history = node;
 	return (0);
 }
 
 /**
- * renumber_history - It renumbers the hist linked list after changes
- * @info: The structure contains potential args. It is used to maintain
+ * renum_hist - It renumbers the hist linked list after changes
+ * @inf: The structure contains potential args. It is used to maintain
  *
  * Return: new histcount
  */
-int renumber_history(info_t *info)
+int renum_hist(info_t *inf)
 {
-	list_t *node = info->history;
+	list_t *node = inf->history;
 	int i = 0;
 
 	while (node)
@@ -140,5 +140,5 @@ int renumber_history(info_t *info)
 		node->num = i++;
 		node = node->nxt;
 	}
-	return (info->histcount = i);
+	return (inf->Hcount = i);
 }
