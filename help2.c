@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * help_alias - It prints help info for 'alias' built-in
+ * help2_alias - It prints help info for 'alias' built-in
  * @info: The structure with flags
  * Return: void
  */
-void help_alias(info_t *info)
+void help2_alias(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("alias: alias [-p] [name[=value] ... ]\n");
@@ -33,11 +33,11 @@ void help_alias(info_t *info)
 }
 
 /**
- * help_echo - It prints help info for 'echo' built-in
+ * help2_echo - It prints help info for 'echo' built-in
  * @info: The structure with flags
  * Return: void
  */
-void help_echo(info_t *info)
+void help2_echo(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("echo: echo [-neE] [arg ...]\n");
@@ -56,11 +56,11 @@ void help_echo(info_t *info)
 }
 
 /**
- * help_pwd - It prints help info for 'pwd' built-in
+ * help2_pwd - It prints help info for 'pwd' built-in
  * @info: The structure with flags
  * Return: void
  */
-void help_pwd(info_t *info)
+void help2_pwd(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("pwd: pwd [-LP]\n");
