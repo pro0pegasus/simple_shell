@@ -13,13 +13,13 @@ char *get_historyf(info_t *inf)
 	dir = _getenv(inf, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HDOC_FILE) + 2));
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
 	_strcpy(buf, dir);
 	_strcat(buf, "/");
-	_strcat(buf, HDOC_FILE);
+	_strcat(buf, HIST_FILE);
 	return (buf);
 }
 
@@ -96,7 +96,7 @@ int read_hist(info_t *inf)
 		build_hist_lst(inf, buf + last, linecount++);
 	free(buf);
 	inf->Hcount = linecount;
-	while (info->Hcount-- >= INT_MAX)
+	while (inf->Hcount-- >= INT_MAX)
 		del_node_ind(&(inf->history), 0);
 	read_hist(inf);
 	return (inf->Hcount);

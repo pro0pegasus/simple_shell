@@ -6,15 +6,15 @@
  *          constant func prototype.
  * Return: Always 0
  */
-char **get_environ(info_t *info)
+char **get_environ(info_t *inf)
 {
-	if (!info->environ || info->env_changed)
+	if (!inf->environ || inf->env_changed)
 	{
-		info->environ = list_to_strings(info->env);
-		info->env_changed = 0;
+		inf->environ = list_to_strings(inf->env);
+		inf->env_changed = 0;
 	}
 
-	return (info->environ);
+	return (inf->environ);
 }
 
 /**
@@ -24,9 +24,9 @@ char **get_environ(info_t *info)
  *  Return: 1 delete, 0 otherwise
  * @var: the str env var property
  */
-int _unsetenv(info_t *info, char *var)
+int _unsetenv(info_t *inf, char *var)
 {
-	list_t *node = info->env;
+	list_t *node = inf->env;
 	size_t i = 0;
 	char *p;
 
@@ -38,15 +38,15 @@ int _unsetenv(info_t *info, char *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
+			inf->env_changed = delete_node_at_index(&(inf->env), i);
 			i = 0;
-			node = info->env;
+			node = inf->env;
 			continue;
 		}
 		node = node->nxt;
 		i++;
 	}
-	return (info->env_changed);
+	return (inf->env_changed);
 }
 
 /**
@@ -58,7 +58,7 @@ int _unsetenv(info_t *info, char *var)
  * @value: string env var value
  *  Return: Always 0
  */
-int _setenv(info_t *info, char *var, char *value)
+int _setenv(info_t *inf, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
@@ -73,7 +73,7 @@ int _setenv(info_t *info, char *var, char *value)
 	_strcpy(buf, var);
 	_strcat(buf, "=");
 	_strcat(buf, value);
-	node = info->env;
+	node = inf->env;
 	while (node)
 	{
 		p = starts_with(node->str, var);
@@ -81,14 +81,14 @@ int _setenv(info_t *info, char *var, char *value)
 		{
 			free(node->str);
 			node->str = buf;
-			info->env_changed = 1;
+			inf->env_changed = 1;
 			return (0);
 		}
 		node = node->nxt;
 	}
-	add_node_end(&(info->env), buf, 0);
+	add_node_end(&(inf->env), buf, 0);
 	free(buf);
-	info->env_changed = 1;
+	inf->env_changed = 1;
 	return (0);
 }
 
@@ -97,22 +97,22 @@ int _setenv(info_t *info, char *var, char *value)
  * @info: info structure
  * Return: void
  */
-void print_prompt(info_t *info)
+void print_prompt(info_t *inf)
 {
 	char hostname[WRITE_BUF_SIZE + 1];
 	char *_PS1 = NULL, *prompt = NULL;
 
-	prompt = _getenv(info, "PS1=");
+	prompt = _getenv(inf, "PS1=");
 	if (!prompt)
 		_puts("$ ");
 	else
 	{
 		if (_strcmp(prompt, "\\!") == 0)
-			_PS1 = convert_num(info->histcount, 10, 0);
+			_PS1 = convert_num(inf->histcount, 10, 0);
 		else if (_strcmp(prompt, "\\a") == 0)
 			_PS1 = "\a";
 		else if (_strcmp(prompt, "\\d") == 0)
-			_PS1 = create_date();
+			_PS1 = make_date();
 		else if (_strcmp(prompt, "\\H") == 0)
 		{
 			if (gethostname(hostname, WRITE_BUF_SIZE) == 0)
@@ -125,9 +125,9 @@ void print_prompt(info_t *info)
 		else if (_strcmp(prompt, "\\s") == 0)
 			_PS1 = "-hsh";
 		else if (_strcmp(prompt, "\\u") == 0)
-			_PS1 = _getenv(info, "USER=");
+			_PS1 = _getenv(inf, "USER=");
 		else if (_strcmp(prompt, "\\w") == 0)
-			_PS1 = _getenv(info, "PWD=");
+			_PS1 = _getenv(inf, "PWD=");
 		else
 			_puts(prompt);
 		_puts(_PS1);

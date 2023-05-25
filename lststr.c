@@ -82,7 +82,7 @@ size_t print_lst_string(const list_t *hd)
 
 	while (hd)
 	{
-		_puts(hd->str ? h->str : "(nil)");
+		_puts(hd->str ? hd->str : "(nil)");
 		_puts("\n");
 		hd = hd->nxt;
 		j++;
