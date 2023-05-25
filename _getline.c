@@ -128,13 +128,13 @@ fileDBuff *get_fileDBuff(fileDBuff *head, const int fileD)
  *@s: number of bytes to find
  *Return: (t) the memory area t pointer
  */
-char *__strchr(char *st, char b, ssize_t s)
+char *__strchr(char *t, char b, ssize_t s)
 {
-	if (!st)
+	if (!t)
 		return (NULL);
 	do {
-		if (*st == b)
-			return (st);
+		if (*t == b)
+			return (t);
 		st++;
 	} while (--s > 0);
 	return (NULL);
