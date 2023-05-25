@@ -17,7 +17,7 @@ char **strtow0(char *stri, char *del)
 	if (!del)
 		del = " ";
 	for (a = 0; stri[a] != '\0'; a++)
-		if (!is_deli(st[a], del) && (is_deli(st[a + 1], del) || !st[a + 1]))
+		if (!is_deli(stri[a], del) && (is_deli(stri[a + 1], del) || !stri[a + 1]))
 			nwords++;
 
 	if (nwords == 0)

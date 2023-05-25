@@ -136,7 +136,7 @@ int renum_hist(info_t *inf)
 
 	while (node)
 	{
-		node->num = i++;
+		node->numberF = i++;
 		node = node->nxt;
 	}
 	return (inf->Hcount = i);

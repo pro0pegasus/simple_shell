@@ -27,7 +27,7 @@ char *__get(const int fileD)
 			fileB = fileB->nxt;
 			free(temp);
 		}
-		_memset((void *)*head, 0, sizeof(head));
+		_memset((void *)&head, 0, sizeof(head));
 		return (NULL);
 	}
 	fileB = get_fileDBuff(&head, fileD);
@@ -47,7 +47,7 @@ char *__read_buff(fileDBuff *fB)
 	char buff[READ_SIZE + 1], *pe, *line;
 	ssize_t r = 0;
 
-	pe = _strchr(fB->buff + fB->j, '\n', fB->leng - fB->j);
+	pe = __strchr(fB->buff + fB->j, '\n', fB->leng - fB->j);
 	if (!fB->leng || fB->j >= fB->leng || !pe)
 	{
 		while (1)
@@ -64,7 +64,7 @@ char *__read_buff(fileDBuff *fB)
 			if (!fB->buff)
 				return (NULL);
 			_memcpy((void *)(fB->buff + fB->leng), buff, r), fB->leng += r;
-			pe = _strchr(fB->buff + (fB->leng - r), '\n', r);
+			pe = __strchr(fB->buff + (fB->leng - r), '\n', r);
 			if (pe)
 			{
 				fB->buff[fB->leng] = 0;
@@ -107,7 +107,7 @@ fileDBuff *get_fileDBuff(fileDBuff *head, const int fileD)
 	node = malloc(sizeof(*node));
 	if (!node)
 		return (NULL);
-	if (fileD < hd->fileD)
+	if (fileD < head->fileD)
 	{
 		_memcpy((void *)node, (void *)head, sizeof(*head));
 		_memset((void *)head, 0, sizeof(*head));
@@ -128,14 +128,14 @@ fileDBuff *get_fileDBuff(fileDBuff *head, const int fileD)
  *@s: number of bytes to find
  *Return: (t) the memory area t pointer
  */
-char *__strchr(char *t, char b, ssize_t s)
+char *__strchr(char *st, char b, ssize_t s)
 {
-	if (!t)
+	if (!st)
 		return (NULL);
 	do {
-		if (*t == b)
-			return (t);
-		t++;
+		if (*st == b)
+			return (st);
+		st++;
 	} while (--s > 0);
 	return (NULL);
 }

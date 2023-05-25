@@ -32,8 +32,8 @@ typedef struct fileD
 
 #define READ_SIZE 1024
 char *__get(const int fileD);
-char *__read_buff(fileDBuff *fileB);
-fileDBuff *get_fileDBuff(fileDBuff *hd, const int fileD);
-char *__strchr(char *st, char ch, ssize_t s);
+char *__read_buff(fileDBuff *fB);
+fileDBuff *get_fileDBuff(fileDBuff *head, const int fileD);
+char *__strchr(char *t, char b, ssize_t s);
 
 #endif

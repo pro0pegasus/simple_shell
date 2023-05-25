@@ -10,7 +10,7 @@ char **get_environ(info_t *inf)
 {
 	if (!inf->environ || inf->env_changed)
 	{
-		inf->environ = list_to_strings(inf->env);
+		inf->environ = lst_str(inf->env);
 		inf->env_changed = 0;
 	}
 
@@ -38,7 +38,7 @@ int _unsetenv(info_t *inf, char *var)
 		p = starts_with(node->str, var);
 		if (p && *p == '=')
 		{
-			inf->env_changed = delete_node_at_index(&(inf->env), i);
+			inf->env_changed = del_node_ind(&(inf->env), i);
 			i = 0;
 			node = inf->env;
 			continue;
@@ -108,7 +108,7 @@ void print_prompt(info_t *inf)
 	else
 	{
 		if (_strcmp(prompt, "\\!") == 0)
-			_PS1 = convert_num(inf->histcount, 10, 0);
+			_PS1 = convert_num(inf->Hcount, 10, 0);
 		else if (_strcmp(prompt, "\\a") == 0)
 			_PS1 = "\a";
 		else if (_strcmp(prompt, "\\d") == 0)

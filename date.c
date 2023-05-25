@@ -14,8 +14,8 @@ char *make_date(void)
 	time(&currentTime);
 	myTime = localtime(&currentTime);
 
-	weekday = its_weekday(myTime->tm_wday);
-	month = its_month(myTime->tm_mon);
+	weekday = make_day(myTime->tm_wday);
+	month = make_month(myTime->tm_mon);
 	day = convert_num(myTime->tm_mday - 1, 10, 0);
 
 	WMD = _strdup(weekday);
