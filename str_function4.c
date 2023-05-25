@@ -63,10 +63,9 @@ char **strtow1(char *stri, char del)
 	if (stri == NULL || stri[0] == 0)
 		return (NULL);
 	for (a = 0; stri[a] != '\0'; a++)
-		if ((stri[a] != del && stri[a + 1] == del) ||
-		(stri[a] != del && !stri[a + 1]) || stri[a + 1] == del)
-		       nwords++;
-=======
+		if (stri[a] != del && stri[a + 1] == del)
+			if ((stri[a] != del && !stri[a + 1]) || stri[a + 1] == del)
+				nwords++;
 	if ((stri[a] != del && stri[a + 1] == del)
 			|| (stri[a] != del && !stri[a + 1]) || stri[a + 1] == del)
 		nwords++;

@@ -39,50 +39,49 @@ char *__get(const int fileD)
 }
 /**
  * __read_buff - reads buffer
- * @fileB: the file buff struct
+ * @fB: the file buff struct
  * Return: -1 on error and 0 on success
  */
-char *__read_buff(fileDBuff *fileB)
+char *__read_buff(fileDBuff *fB)
 {
 	char buff[READ_SIZE + 1], *pe, *line;
 	ssize_t r = 0;
 
-	pe = _strchr(fileB->buff + fileB->j, '\n', fileB->leng - fileB->j);
-	if (!fileB->leng || fileB->j >= fileB->leng || !pe)
+	pe = _strchr(fB->buff + fB->j, '\n', fB->leng - fB->j);
+	if (!fB->leng || fB->j >= fB->leng || !pe)
 	{
 		while (1)
 		{
-			r = read(fileB->fileD, buff, READ_SIZE);
-			if (r < 0 || (r == 0 && !fileB->leng))
-				return (fileB->buff ? (free(fileB->buff), NULL) : NULL);
+			r = read(fB->fileD, buff, READ_SIZE);
+			if (r < 0 || (r == 0 && !fB->leng))
+				return (fB->buff ? (free(fB->buff), NULL) : NULL);
 			if (r == 0)
 			{
-				pe = fileB->buff + fileB->leng;
+				pe = fB->buff + fB->leng;
 				break;
 			}
-			fileB->buff = _realloc(fileB->buff, fileB->leng, fileB->leng + r + 1);
-			if (!fileB->buff)
+			fB->buff = _realloc(fB->buff, fB->leng, fB->leng + r + 1);
+			if (!fB->buff)
 				return (NULL);
-			_memcpy((void *)(fileB->buff + fileB->leng), buff, r), fileB->leng += r;
-			pe = _strchr(fileB->buff + (fileB->leng - r), '\n', r);
+			_memcpy((void *)(fB->buff + fB->leng), buff, r), fB->leng += r;
+			pe = _strchr(fB->buff + (fB->leng - r), '\n', r);
 			if (pe)
 			{
-				fileB->buff[fileB->leng] = 0;
+				fB->buff[fB->leng] = 0;
 				break;
 			}
 		}
 	}
 	*pe = '\0';
-	line = malloc(1 + (pe - (fileB->buff + fileB->j)));
+	line = malloc(1 + (pe - (fB->buff + fB->j)));
 	if (!line)
 		return (NULL);
-	_memcpy((void *)line, fileB->buff + fileB->j,
-			1 + (pe - (fileB->buff + fileB->j)));
-	fileB->j = (pe - fileB->buff) + 1;
-	if (fileB->j >= fileB->leng)
+	_memcpy((void *)line, fB->buff + fB->j, 1 + (pe - (fB->buff + fB->j)));
+	fB->j = (pe - fB->buff) + 1;
+	if (fB->j >= fB->leng)
 	{
-		fileB->j = fileB->leng = 0;
-		fileB->buff = (free(fileB->buff), NULL);
+		fB->j = fB->leng = 0;
+		fB->buff = (free(fB->buff), NULL);
 	}
 	return (line);
 }

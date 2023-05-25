@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * help - It returns info about args
+ * help1 - It returns info about args
  * Return: 0 on success
  */
 void help1(void)
@@ -14,7 +14,7 @@ void help1(void)
 }
 
 /**
- * help_cd - It prints help information for cd built-in
+ * help1_cd - It prints help information for cd built-in
  * @info: The struct with flags
  * Return: void
  */

@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * parse_left_redirect -It  parses redir directives from input
- * @info: parameter struct
+ * parse_redi_left - It  parses redir directives from input
+ * @inf: parameter struct
  * Return: void
  */
 void parse_redi_left(info_t *inf)
@@ -39,8 +39,8 @@ void parse_redi_left(info_t *inf)
 }
 
 /**
- * parse_right_redirect - It parses redir directives from input
- * @info: parameter struct
+ * parse_redi_right - It parses redir directives from input
+ * @inf: parameter struct
  * Return: void
  */
 void parse_redi_right(info_t *inf)
@@ -77,10 +77,10 @@ void parse_redi_right(info_t *inf)
 }
 
 /**
- * open_redirect - It opens a fd for redir writing
- * @info: parameter struct
- * @file: file name
- * @left: 1 if left, 0 if right
+ * open_redi - It opens a fd for redir writing
+ * @inf: parameter struct
+ * @fle: file name
+ * @lft: 1 if left, 0 if right
  * Return: int fd or -1
  */
 int open_redi(info_t *inf, char *fle, int lft)
@@ -125,10 +125,10 @@ int open_redi(info_t *inf, char *fle, int lft)
 }
 
 /**
- * parse_heredoc - It parses line of HDOC input into buffer
- * @info: parameter struct
+ * parse_hdoc - It parses line of HDOC input into buffer
+ * @inf: parameter struct
  * @buf: getline buffer
- * @r: number of bytes read into getline buffer
+ * @s: number of bytes read into getline buffer
  * Return: length of hdoc_cmd if end of hdoc else r
  */
 size_t parse_hdoc(info_t *inf, char **buf, size_t s)
@@ -137,7 +137,7 @@ size_t parse_hdoc(info_t *inf, char **buf, size_t s)
 	static size_t hdoc_i, hdoc_len;
 	size_t len;
 
-	r++;
+	s++;
 	if (!_strcmp(inf->hdoc, *buf))
 	{
 		free((void **)buf);
@@ -170,8 +170,8 @@ size_t parse_hdoc(info_t *inf, char **buf, size_t s)
 }
 
 /**
- * restore_stdfd - It restores stdin/out after redir
- * @info: parameter struct
+ * rest_stdfd - It restores stdin/out after redir
+ * @inf: parameter struct
  */
 void rest_stdfd(info_t *inf)
 {
