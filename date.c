@@ -16,7 +16,7 @@ char *create_date(void)
 
 	weekday = its_weekday(myTime->tm_wday);
 	month = its_month(myTime->tm_mon);
-	day = convert_number(myTime->tm_mday - 1, 10, 0);
+	day = convert_num(myTime->tm_mday - 1, 10, 0);
 
 	WMD = _strdup(weekday);
 	_strcat(WMD, " ");
@@ -43,9 +43,9 @@ char *create_time(int seconds)
 	time(&currentTime);
 	myTime = localtime(&currentTime);
 
-	hour = convert_number(myTime->tm_hour + 1, 10, 0);
-	minute = convert_number(myTime->tm_min, 10, 0);
-	second = convert_number(myTime->tm_sec, 10, 0);
+	hour = convert_num(myTime->tm_hour + 1, 10, 0);
+	minute = convert_num(myTime->tm_min, 10, 0);
+	second = convert_num(myTime->tm_sec, 10, 0);
 
 	if (_strlen(hour) < 2)
 	{

@@ -4,7 +4,7 @@
  * help - It returns info about args
  * Return: 0 on success
  */
-void help(void)
+void help1(void)
 {
 	printf("ANT main, version 1.2.01-release (x86_64-pc-linux-gnu)\n"
 	"These shell commands are defined internally.  Type `help' to see this list.\n"
@@ -18,7 +18,7 @@ void help(void)
  * @info: The struct with flags
  * Return: void
  */
-void help_cd(info_t *info)
+void help1_cd(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("cd: cd [-L|[-P [-e]] [-@]] [dir]\n");
@@ -62,11 +62,11 @@ void help_cd(info_t *info)
 }
 
 /**
- * help_exit - It prints help for exit built-in
+ * help1_exit - It prints help for exit built-in
  * @info: The struct with flags
  * Return: void
  */
-void help_exit(info_t *info)
+void help1_exit(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("exit: exit [n]\n");
@@ -83,11 +83,11 @@ void help_exit(info_t *info)
 }
 
 /**
- * help_help - It prints help for help
+ * help1_help - It prints help for help
  * @info: The struct with cmd
  * Return: void
  */
-void help_help(info_t *info)
+void help1_help(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 		printf("help: help [-dms] [pattern ...]\n");
@@ -117,11 +117,11 @@ void help_help(info_t *info)
 }
 
 /**
- * help_history - It displays help info about hist built-in
+ * help1_hist - It displays help info about hist built-in
  * @info: The struct with cmd
  * Return: void
  */
-void help_history(info_t *info)
+void help1_hist(info_t *info)
 {
 	if (info->help && _strcmp(info->help, "s") == 0)
 	{
