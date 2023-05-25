@@ -35,7 +35,7 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * ffree - It frees a pointer and 0 the address
+ * free - It frees a pointer and 0 the address
  * @ptr: address of the pointer to free
  *
  * Return: 1 if freed, otherwise 0.
@@ -44,7 +44,7 @@ int ffree(void **ptr)
 {
 	if (ptr && *ptr)
 	{
-		free(*ptr);
+		ffree(*ptr);
 		*ptr = NULL;
 		return (1);
 	}
