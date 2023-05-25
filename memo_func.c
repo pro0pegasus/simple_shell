@@ -40,7 +40,7 @@ char *_memset(char *s, char b, unsigned int n)
  *
  * Return: 1 if freed, otherwise 0.
  */
-int bfree(void **ptr)
+int ffree(void **ptr)
 {
 	if (ptr && *ptr)
 	{
@@ -55,7 +55,7 @@ int bfree(void **ptr)
  * ffree  It- frees a str of strs
  * @pp: str of strs
  */
-void ffree(char **pp)
+void free(char **pp)
 {
 	char **a = pp;
 
