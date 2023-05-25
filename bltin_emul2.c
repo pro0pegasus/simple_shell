@@ -7,6 +7,7 @@
  *        constant func prototype.
  *  Return: Always 0
  */
+
 int _myhist(info_t *inf)
 {
 	print_lst(inf->history);
