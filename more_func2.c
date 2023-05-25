@@ -52,7 +52,7 @@ int print_d(int inp, int filed)
 	curr = _abs_;
 	for (j = 1000000000; j > 1; j /= 10)
 	{
-		if (_abs / j)
+		if (_abs_ / j)
 		{
 			__putchar('0' + curr / j);
 			coun++;
@@ -86,17 +86,17 @@ char *convert_num(long int numb, int bass, int fl)
 		sig = '-';
 	}
 	arr = fl & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	potr = &buff[49];
-	*potr = '\0';
+	pontr = &buff[49];
+	*pontr = '\0';
 
 	do {
-		*--potr = arr[n % bass];
+		*--pontr = arr[n % bass];
 		n /= bass;
 	} while (n != 0);
 
-	if (sign)
-		*--potr = sig;
-	return (potr);
+	if (sig)
+		*--pontr = sig;
+	return (pontr);
 }
 
 /**
