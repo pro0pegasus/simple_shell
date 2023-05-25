@@ -7,15 +7,15 @@
  * Return: 0 if no num in string, converted num otherwise
  *        -1 on error
  */
-void print_error(info_t *info, char *estr)
+void print_err(info_t *inf, char *str)
 {
-	_eputs(info->fname);
+	_eputs(inf->fname);
 	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
+	print_d(inf->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(info->argv[0]);
+	_eputs(inf->argv[0]);
 	_eputs(": ");
-	_eputs(estr);
+	_eputs(str);
 }
 
 /**
@@ -25,12 +25,12 @@ void print_error(info_t *info, char *estr)
  * Return: 0 if no num in string, converted num otherwise
  *        -1 on error
  */
-void print_error_noarg(info_t *info, char *estr)
+void print_err_noarg(info_t *inf, char *str)
 {
-	_eputs(info->fname);
+	_eputs(inf->fname);
 	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
+	print_d(inf->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(estr);
+	_eputs(str);
 	_eputchar(BUF_FLUSH);
 }

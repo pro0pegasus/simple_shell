@@ -17,7 +17,7 @@ char **strtow0(char *stri, char *del)
 	if (!del)
 		del = " ";
 	for (a = 0; stri[a] != '\0'; a++)
-		if (!is_deli(str[a], del) && (is_deli(stri[a + 1], del) || !str[a + 1]))
+		if (!is_deli(st[a], del) && (is_deli(stri[a + 1], del) || !str[a + 1]))
 			nwords++;
 
 	if (nwords == 0)
@@ -66,6 +66,10 @@ char **strtow1(char *stri, char del)
 		if ((stri[a] != del && stri[a + 1] == del) ||
 		(stri[a] != del && !stri[a + 1]) || stri[a + 1] == del)
 		       nwords++;
+=======
+	if ((stri[a] != del && stri[a + 1] == del)
+			|| (stri[a] != del && !stri[a + 1]) || stri[a + 1] == del)
+		nwords++;
 	if (nwords == 0)
 		return (NULL);
 	st = malloc((1 + nwords) * sizeof(char *));

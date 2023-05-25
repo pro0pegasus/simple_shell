@@ -34,6 +34,6 @@ typedef struct fileD
 char *__get(const int fileD);
 char *__read_buff(fileDBuff *fileB);
 fileDBuff *get_fileDBuff(fileDBuff *hd, const int fileD);
-
+char *__strchr(char *st, char ch, ssize_t s);
 
 #endif

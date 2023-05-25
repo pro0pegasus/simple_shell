@@ -1,10 +1,10 @@
-#include "main"
+#include "main.h"
 
 /**
  * create_date - It converts tm struct int into strings
  * Return: today's - date in Weekday Month Date format
  */
-char *create_date(void)
+char *date(void)
 {
 	struct tm *myTime;
 	time_t currentTime;
@@ -34,7 +34,7 @@ char *create_date(void)
  * @seconds: flag for printing sec or not
  * Return: current time
  */
-char *create_time(int seconds)
+char *time(int seconds)
 {
 	struct tm *myTime;
 	time_t currentTime;
@@ -69,7 +69,7 @@ char *create_time(int seconds)
  * @weekday_int: weekday in int
  * Return: weekday string
  */
-char *its_weekday(int weekday_int)
+char *day(int weekday_int)
 {
 	char *weekdays[7];
 	char *weekday_string;
@@ -91,7 +91,7 @@ char *its_weekday(int weekday_int)
  * @month_int: month in int
  * Return: month string
  */
-char *its_month(int month_int)
+char *month(int month_int)
 {
 	char *months[12];
 	char *month_string;

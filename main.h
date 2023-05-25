@@ -291,9 +291,9 @@ int open_fle(info_t *inf, char *nom, int silence);
 void read_startup_fd(info_t *inf);
 
 /*date.c*/
-char *date(void);
-char *time(int);
-char *day(int);
-char *month(int);
+char *make_date(void);
+char *make_time(int);
+char *make_day(int);
+char *make_month(int);
 
 #endif

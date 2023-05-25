@@ -8,15 +8,15 @@
 
 char *__get(const int fileD)
 {
-	static fileDBuff hd;
+	static fileDBuff head;
 	fileDBuff *fileB = NULL, *temp;
 	char *line = NULL;
 
 	if (fileD == -1)
 	{
-		if (hd.buff)
-			hd.buff = (free(hd.buff), NULL);
-		for (fileB = hd.nxt; fileB;)
+		if (head.buff)
+			head.buff = (free(head.buff), NULL);
+		for (fileB = head.nxt; fileB;)
 		{
 			if (fileB->buff)
 			{
@@ -27,10 +27,10 @@ char *__get(const int fileD)
 			fileB = fileB->nxt;
 			free(temp);
 		}
-		_memset((void *)*hd, 0, sizeof(hd));
+		_memset((void *)*head, 0, sizeof(head));
 		return (NULL);
 	}
-	fileB = get_fileDBuff(&hd, fileD);
+	fileB = get_fileDBuff(&head, fileD);
 	if (fileB)
 		line = __read_buff(fileB);
 	if (line && line[0] == '\n' && !line[1])
@@ -88,38 +88,38 @@ char *__read_buff(fileDBuff *fileB)
 }
 /**
  * get_fileDBuff - adds to linked lists
- * @hd: head node from pointer
+ * @head: head node from pointer
  * @fileD: file descrip from buf to get
  * Return: the pointer towards the fileD buff node
  */
-fileDBuff *get_fileDBuff(fileDBuff *hd, const int fileD)
+fileDBuff *get_fileDBuff(fileDBuff *head, const int fileD)
 {
 	fileDBuff *node;
 
-	if (!hd->buff && !hd->fileD && !hd->nxt)
+	if (!head->buff && !head->fileD && !head->nxt)
 	{
-		hd->fileD = fileD;
-		return (hd);
+		head->fileD = fileD;
+		return (head);
 	}
-	for (; hd->nxt && hd->nxt->fileD <= fileD; hd = hd->nxt)
+	for (; head->nxt && head->nxt->fileD <= fileD; head = head->nxt)
 		;
-	if (hd->fileD == fileD)
-		return (hd);
+	if (head->fileD == fileD)
+		return (head);
 	node = malloc(sizeof(*node));
 	if (!node)
 		return (NULL);
 	if (fileD < hd->fileD)
 	{
-		_memcpy((void *)node, (void *)hd, sizeof(*hd));
-		_memset((void *)hd, 0, sizeof(*hd));
-		hd->fileD = fileD;
-		hd->nxt = node;
-		return (hd);
+		_memcpy((void *)node, (void *)head, sizeof(*head));
+		_memset((void *)head, 0, sizeof(*head));
+		head->fileD = fileD;
+		head->nxt = node;
+		return (head);
 	}
 	_memset((void *)node, 0, sizeof(*node));
 	node->fileD = fileD;
-	node->nxt = hd->nxt;
-	hd->nxt = node;
+	node->nxt = head->nxt;
+	head->nxt = node;
 	return (node);
 }
 /**
