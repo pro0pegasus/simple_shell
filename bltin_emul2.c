@@ -7,7 +7,10 @@
  *        constant func prototype.
  *  Return: Always 0
  */
+<<<<<<< HEAD
+=======
 
+>>>>>>> 44ed807785a4c56c2bb87a914b245a44734d5718
 int _myhist(info_t *inf)
 {
 	print_lst(inf->history);
@@ -31,8 +34,8 @@ int unset_alias(info_t *inf, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index(&(inf->alias),
-		del_node_ind(inf->alias, starts_with(inf->alias, str, -1)));
+	ret = del_node_ind(&(inf->alias),
+		node_ind(inf->alias, node_start(inf->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -83,7 +86,7 @@ int print_alias(list_t *node)
 
 /**
  * _myalias - It mimics the alias builtin
- * @info: The structure contains potential args. Used to maintain
+ * @inf: The structure contains potential args. Used to maintain
  *          constant funct prototype.
  *  Return: Always 0
  */
@@ -109,7 +112,7 @@ int _myalias(info_t *inf)
 		if (p)
 			set_alias(inf, inf->argv[i]);
 		else
-			print_alias(starts_with(inf->alias, inf->argv[i], '='));
+			print_alias(node_start(inf->alias, inf->argv[i], '='));
 	}
 
 	return (0);

@@ -23,7 +23,7 @@ void clear_info(info_t *inf)
 
 /**
  * set_info - It initializes info t struct
- * @inf the struct address
+ * @inf: the struct address
  * @av: argument vector
  * Return: 0 if no error else err code
  */
