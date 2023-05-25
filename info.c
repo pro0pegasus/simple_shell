@@ -2,109 +2,109 @@
 
 /**
  * clear_info - It initializes infot struct
- * @info: struct address
+ * @inf: struct address
  */
-void clear_info(info_t *info)
+void clear_info(info_t *inf)
 {
-	info->arg = NULL;
-	info->argv = NULL;
-	info->path = NULL;
-	info->argc = 0;
-	if (info->left_redirect_from_fd != DOC_FD)
+	inf->arg = NULL;
+	inf->argv = NULL;
+	inf->path = NULL;
+	inf->argc = 0;
+	if (inf->left_redirect_from_fd != DOC_FD)
 	{
 		/* TODO where else? - when to RESET? */
-		info->left_redirect_from_fd = -1;
+		inf->left_redirect_from_fd = -1;
 	}
-	info->left_append = 0;
-	info->right_redirect_from_fd = 1;
-	info->right_redirect_to_fd = -1;
-	info->right_append = 0;
+	inf->left_append = 0;
+	inf->right_redirect_from_fd = 1;
+	inf->right_redirect_to_fd = -1;
+	inf->right_append = 0;
 }
 
 /**
  * set_info - It initializes info t struct
- * @info: the struct address
+ * @inf: the struct address
  * @av: argument vector
  * Return: 0 if no error else err code
  */
-int set_info(info_t *info, char **av)
+int set_info(info_t *inf, char **av)
 {
 	int i = 0;
 
-	info->err_num = 0;
-	info->fname = av[0];
-	if (info->arg)
+	inf->err_num = 0;
+	inf->fname = av[0];
+	if (inf->arg)
 	{
-		parse_left_redirect(info);
-		parse_right_redirect(info);
-		if (info->left_redirect_from_fd == DOC_FD)
+		parse_left_redirect(inf);
+		parse_right_redirect(inf);
+		if (inf->left_redirect_from_fd == DOC_FD)
 		{
-			if (!info->hdoc_cmd)
-				info->hdoc_cmd = _strdup(info->arg);
+			if (!inf->hdoc_cmd)
+				inf->hdoc_cmd = _strdup(inf->arg);
 		}
-		handle_redirects(info);
-		info->argv = strtow1(info->arg, " \t");
-		if (!info->argv)
+		handle_redirects(inf);
+		inf->argv = strtow1(inf->arg, " \t");
+		if (!inf->argv)
 		{
 
-			info->argv = malloc(sizeof(char *) * 2);
-			if (info->argv)
+			inf->argv = malloc(sizeof(char *) * 2);
+			if (inf->argv)
 			{
-				info->argv[0] = _strdup(info->arg);
-				info->argv[1] = NULL;
+				inf->argv[0] = _strdup(inf->arg);
+				inf->argv[1] = NULL;
 			}
 		}
-		for (i = 0; info->argv && info->argv[i]; i++)
+		for (i = 0; inf->argv && inf->argv[i]; i++)
 			;
-		info->argc = i;
+		inf->argc = i;
 
-		repl_alias(info);
-		repl_var(info);
+		repl_alias(inf);
+		repl_var(inf);
 	}
-	return (info->err_num);
+	return (inf->err_num);
 }
 
 /**
  * free_info - It frees info t structure fields
- * @info: structure address
+ * @inf: structure address
  * @all: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void free_info(info_t *inf, int all)
 {
-	rest_stdfd(info);
-	free(info->argv);
-	info->argv = NULL;
-	info->path = NULL;
-	if (info->left_redirect_from_fd > 2)
+	rest_stdfd(inf);
+	free(inf->argv);
+	inf->argv = NULL;
+	inf->path = NULL;
+	if (inf->left_redirect_from_fd > 2)
 	{
-		close(info->left_redirect_from_fd);
-		info->left_redirect_from_fd = -1;
+		close(inf->left_redirect_from_fd);
+		inf->left_redirect_from_fd = -1;
 	}
-	if (info->right_redirect_to_fd > 2)
+	if (inf->right_redirect_to_fd > 2)
 	{
-		close(info->right_redirect_to_fd);
-		info->right_redirect_to_fd = -1;
+		close(inf->right_redirect_to_fd);
+		inf->right_redirect_to_fd = -1;
 	}
-	if (info->hdoc_txt && info->left_redirect_from_fd != DOC_FD)
-		free((void **)&info->hdoc_txt);
+	if (inf->hdoc_txt && inf->left_redirect_from_fd != DOC_FD)
+		free((void **)&inf->hdoc_txt);
 	if (all)
 	{
-		if (!info->cmd_buf)
-			free(info->arg);
-		if (info->env)
-			free_lst(&(info->env));
-		if (info->history)
-			free_lst(&(info->history));
-		if (info->alias)
-			free_lst(&(info->alias));
-		free((void **)&info->hdoc);
-		free((void **)&info->hdoc_txt);
-		free((void **)&info->hdoc_cmd);
-		free(info->environ);
-			info->environ = NULL;
-		free((void **)info->cmd_buf);
-		if (info->readfd > 2)
-			close(info->readfd);
+		if (!inf->cmd_buf)
+			free(inf->arg);
+		if (inf->env)
+			free_lst(&(inf->env));
+		if (inf->history)
+			free_lst(&(inf->history));
+		if (inf->alias)
+			free_lst(&(inf->alias));
+		free((void **)&inf->hdoc);
+		free((void **)&inf->hdoc_txt);
+		free((void **)&inf->hdoc_cmd);
+		free(inf->environ);
+			inf->environ = NULL;
+		free((void **)inf->cmd_buf);
+		if (inf->readfd > 2)
+			close(inf->readfd);
 		_getline(-1);
 		_putchar(BUF_FLUSH);
 	}
@@ -112,34 +112,34 @@ void free_info(info_t *info, int all)
 
 /**
  * print_info - It prints info t structure
- * @info:the struct address
+ * @inf:the struct address
  */
-void print_info(info_t *info)
+void print_info(info_t *inf)
 {
 	int i = 0;
 
-	printf("info->arg:[%s]\n", info->arg);
-	printf("info->argv:%s\n", info->argv ? "" : "[(null)]");
-	for (i = 0; info->argv && info->argv[i]; i++)
-		printf("\tinfo->argv[%d]:[%s]\n", i, info->argv[i]);
-	printf("info->path:[%s]\n", info->path);
-	printf("info->argc:[%d]\n", info->argc);
-	printf("info->line_count:[%d]\n", info->line_count);
-	printf("info->err_num:[%d]\n", info->err_num);
-	printf("info->status:[%d]\n", info->status);
-	printf("info->fname:[%s]\n", info->fname);
-	printf("info->env:[%p]\n", (void *)info->env);
-	printf("info->cmd_buf:[%p]\n", (void *)info->cmd_buf);
-	printf("info->*cmd_buf:[%s]\n",
-	       info->cmd_buf ? *(info->cmd_buf) : "NONE");
+	printf("inf->arg:[%s]\n", inf->arg);
+	printf("inf->argv:%s\n", inf->argv ? "" : "[(null)]");
+	for (i = 0; inf->argv && inf->argv[i]; i++)
+		printf("\tinf->argv[%d]:[%s]\n", i, inf->argv[i]);
+	printf("inf->path:[%s]\n", inf->path);
+	printf("inf->argc:[%d]\n", inf->argc);
+	printf("inf->line_count:[%d]\n", inf->line_count);
+	printf("inf->err_num:[%d]\n", inf->err_num);
+	printf("inf->status:[%d]\n", inf->status);
+	printf("inf->fname:[%s]\n", inf->fname);
+	printf("inf->env:[%p]\n", (void *)inf->env);
+	printf("inf->cmd_buf:[%p]\n", (void *)inf->cmd_buf);
+	printf("inf->*cmd_buf:[%s]\n",
+	       inf->cmd_buf ? *(inf->cmd_buf) : "NONE");
 
-	printf("info->left_redirect_from_fd:[%d]\n", info->left_redirect_from_fd);
-	printf("info->right_redirect_from_fd:[%d]\n", info->right_redirect_from_fd);
-	printf("info->right_redirect_to_fd:[%d]\n", info->right_redirect_to_fd);
-	printf("info->left_append:[%d]\n", info->left_append);
-	printf("info->heredoc:[%s]\n", info->hdoc);
-	printf("info->heredoc_txt:[%s]\n", info->hdoc_txt);
-	printf("info->heredoc_cmd:[%s]\n", info->hdoc_cmd);
-	printf("pipefd:[%d][%d]\n", info->pipefd[0], info->pipefd[1]);
+	printf("inf->left_redirect_from_fd:[%d]\n", inf->left_redirect_from_fd);
+	printf("inf->right_redirect_from_fd:[%d]\n", inf->right_redirect_from_fd);
+	printf("inf->right_redirect_to_fd:[%d]\n", inf->right_redirect_to_fd);
+	printf("inf->left_append:[%d]\n", inf->left_append);
+	printf("inf->hdoc:[%s]\n", inf->hdoc);
+	printf("inf->hdoc_txt:[%s]\n", inf->hdoc_txt);
+	printf("inf->hdoc_cmd:[%s]\n", inf->hdoc_cmd);
+	printf("pipefd:[%d][%d]\n", inf->pipefd[0], inf->pipefd[1]);
 	printf("==========================\n");
 }
