@@ -13,7 +13,7 @@ void parse_redi_left(info_t *inf)
 	if (!p) /* no redir */
 		return;
 
-	file = p + 1;
+	fle = p + 1;
 	if (p > inf->arg && *(p - 1) == '<')
 	{
 		inf->left_append = 1;
@@ -45,13 +45,13 @@ void parse_redi_left(info_t *inf)
  */
 void parse_redi_right(info_t *inf)
 {
-	char *p = _strchlast(inf->arg, '>'), *file;
+	char *p = _strchlast(inf->arg, '>'), *fle;
 	int fd;
 
 	if (!p) /* no redire */
 		return;
 
-	file = p + 1;
+	fle = p + 1;
 	if (p > inf->arg && *(p - 1) == '>')
 	{
 		inf->right_append = 1;
@@ -92,12 +92,12 @@ int open_redi(info_t *inf, char *fle, int lft)
 		fle++;
 	if (!*fle)
 	{
-		print_err_noarg(info, "Syntax error: newline unexpected\n");
+		print_err_noarg(inf, "Syntax error: newline unexpected\n");
 		return (-1);
 	}
 	if (lft)
 	{
-		if (inf->lft_append)
+		if (inf->left_append)
 		{
 			inf->hdoc = _strdup(fle);
 			if (!inf->hdoc)
@@ -144,8 +144,8 @@ size_t parse_hdoc(info_t *inf, char **buf, size_t s)
 		*buf = inf->hdoc_cmd;
 		inf->hdoc_cmd = NULL;
 		len = _strlen(*buf);
-		inf->hdoc_txt = heredoc_buf;
-		heredoc_buf = NULL;
+		inf->hdoc_txt = hdoc_buf;
+		hdoc_buf = NULL;
 		hdoc_i = hdoc_len = 0;
 		free((void **)&inf->hdoc);
 		return (len);
@@ -177,16 +177,16 @@ void rest_stdfd(info_t *inf)
 {
 	_putchar(BUF_FLUSH);
 	_eputchar(BUF_FLUSH);
-	if (info->dup_stdin)
+	if (inf->dup_stdin)
 	{
-		dup2(info->dup_stdin, STDIN_FILENO);
-		close(info->dup_stdin);
-		info->dup_stdin = 0;
+		dup2(inf->dup_stdin, STDIN_FILENO);
+		close(inf->dup_stdin);
+		inf->dup_stdin = 0;
 	}
-	if (info->dup_stdout)
+	if (inf->dup_stdout)
 	{
-		dup2(info->dup_stdout, STDOUT_FILENO);
-		close(info->dup_stdout);
-		info->dup_stdout = 0;
+		dup2(inf->dup_stdout, STDOUT_FILENO);
+		close(inf->dup_stdout);
+		inf->dup_stdout = 0;
 	}
 }
