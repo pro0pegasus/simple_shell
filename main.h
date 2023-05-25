@@ -19,18 +19,18 @@
 
 
 #define CMD_NORM 0
-#define CMD_OR 2
-#define CMD_AND 3
-#define CMD_CHAIN 4
-#define CMD_PIPE 5
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
+#define CMD_PIPE 4
 
-#define STARTUP_FILECONVERT_LOWERCASE 2
-#define CONVERT_UNSIGNED 1
+#define STARTUP_FILECONVERT_LOWERCASE 1
+#define CONVERT_UNSIGNED 2
 
-#define USE_GETLINE 1
-#define USE_STRTOK 1
-#define HDOC_FILE ".hdoc_history"
-#define HDOC_max 4096
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+#define HIST_FILE ".shell_history"
+#define HIST_max 4096
 #define DOC_FD -2
 #define START_ARRAY_SIZE 10
 #define START_FILE ".shellrc"
