@@ -76,7 +76,8 @@ char *__read_buff(fileDBuff *fileB)
 	line = malloc(1 + (pe - (fileB->buff + fileB->j)));
 	if (!line)
 		return (NULL);
-	_memcpy((void *)line, fileB->buff + fileB->j, 1 + (pe - (fileB->buff + fileB->j)));
+	_memcpy((void *)line, fileB->buff + fileB->j,
+			1 + (pe - (fileB->buff + fileB->j)));
 	fileB->j = (pe - fileB->buff) + 1;
 	if (fileB->j >= fileB->leng)
 	{

@@ -11,7 +11,8 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <time.h>
-
+#include "ansi.h"
+#include "get.h"
 
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
@@ -35,7 +36,7 @@
 #define START_ARRAY_SIZE 10
 #define START_FILE ".shellrc"
 
-extern char **environ; 
+extern char **environ;
 
 /**
  * struct lststr - singly linked list
@@ -121,7 +122,9 @@ typedef struct pinfo
 
 } info_t;
 
-#define INFO_INIT \ {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \ 0, 0, 0, -1, 0, 1, -1, 0, NULL, NULL, NULL, NULL, {0}, -1, 0, 0}
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0, -1, 0, 1, -1, 0, NULL, NULL, NULL, NULL, {0}, -1, 0, 0}
 
 /**
  * struct bltin - contains a builtin string and function
@@ -134,7 +137,7 @@ typedef struct bltin
 	int (*function)(info_t *);
 } B_table;
 
-// shell.c
+/*shell.c*/
 
 int shell(info_t *, char **);
 int find_bltin(info_t *);
@@ -142,152 +145,152 @@ void find_command(info_t *);
 void fork_command(info_t *);
 void handle_redirects(info_t *info);
 
-// path.c
+/*path.c*/
 
 int is_command(info_t *, char *);
 char *dupl_char(char *, int, int);
 char *find_path(info_t *, char *, char *);
 
-// help1.c
+/*help1.c*/
 void help1(void);
 void help1_cd(info_t *);
 void help1_exit(info_t *);
 void help1_help(info_t *);
 void help1_hist(info_t *);
 
-// help2.c
+/*help2.c*/
 void help2_alias(info_t *);
 void help2_echo(info_t *);
 void help2_pwd(info_t *);
 
-// string_functions_error.c
+/*string_functions_error.c*/
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int *fd);
 int _putsfd(char *str, int fd);
 
-// str_functions.c
+/*str_functions.c*/
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *starts_with(const char *, const chart *);
+char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-// str_fucntion3.c
+/*str_fucntion3.c*/
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 char *_strchlast(char *c, char s);
 
-// str_function2.c
+/*str_function2.c*/
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-// str_function4.c
+/*str_function4.c*/
 char **strtow0(char *, char *);
 char **strtow1(char *, char);
 
-// memo_func.c
+/*memo_func.c*/
 char *_memcpy(char *dest, char *src, unsigned int n);
 char *_memset(char *, char, unsigned int);
-void free(char **);
+void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-int ffree(**);
+int bfree(void **);
 
-// more_func.c 
+/*more_func.c*/
 int intractive(info_t *);
 int is_deli(char, char *);
 int isal(int);
 int _atoi(char *);
 
-// more_func2.c
+/*more_func2.c*/
 int _errato(char *);
 int print_d(int, int);
 char *convert_num(long int, int, int);
 void rmv_comment(char *);
 
-// bltin_emul.c
+/*bltin_emul.c*/
 int _myexit(info_t *);
 int _mycd(info_t *);
 int _myhelp(info_t *);
 char *helpf_check(info_t *, char **);
 
-// bltin_emul2.c
+/*bltin_emul2.c*/
 int _myhist(info_t *);
 int _myalias(info_t *);
 
-// getline.c
+/*getline.c*/
 ssize_t get_inp(info_t *);
 int _getline(info_t *, char **, size_t *);
 void siginthandle(int);
 
-// info.c
+/*info.c*/
 void clear_info(info_t *);
 int set_info(info_t *inf, char **av);
 void free_info(info_t *, int);
 void print_info(info_t *inf);
 
-// env.c
+/*env.c*/
 char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int pop_env_lst(info_t *);
 
-// env2.c
+/*env2.c*/
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 void print_prompt(info_t *);
 
-// file_func.c
+/*file_func.c*/
 char *get_historyf(info_t *inf);
 int write_hist(info_t *inf);
 int read_hist(info_t *inf);
 int build_hist_lst(info_t *inf, char *buf, int linecount);
 int renum_hist(info_t *inf);
 
-//lststr.c
+/*lststr.c*/
 list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_lst_string(const list_t *);
 int del_node_ind(list_t **, unsigned int);
 void free_lst(list_t **);
 
-// lststr2.c
+/*lststr2.c*/
 size_t lst_len(const list_t *);
 char **lst_str(list_t *);
 size_t print_lst(const list_t *);
 list_t *node_start(list_t *, char *, char);
 ssize_t node_ind(list_t *, list_t *);
 
-// chains.c
+/*chains.c*/
 int chain(info_t *, char *, size_t *);
 void chain_check(info_t *, char *, size_t *, size_t, size_t);
 int repl_alias(info_t *);
 int repl_var(info_t *);
 int repl_str(char **, char *);
 
-// redir.c
+/*redir.c*/
 void parse_redir_left(info_t *inf);
 void parse_redir_right(info_t *inf);
 int open_redir(info_t *inf, char *fle, int lft);
 size_t parse_hdoc(info_t *inf, char **buf, size_t s);
 void rest_stdfd(info_t *inf);
 
-// pipefd.c
+/*pipefd.c*/
 void open_pipefd(info_t *inf);
 
-// err.c
+/*err.c*/
 void print_err(info_t *, char *);
 void print_err_noarg(info_t *inf, char *str);
 
-// startup_fd.c
+/*startup_fd.c*/
 int open_fle(info_t *inf, char *nom, int silence);
 void read_startup_fd(info_t *inf);
 
-// date.c
+/*date.c*/
 char *date(void);
 char *time(int);
 char *day(int);
