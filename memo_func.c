@@ -52,7 +52,7 @@ int ffree(void **ptr)
 }
 
 /**
- * ffree  It- frees a str of strs
+ * ffree - frees a str of strs
  * @pp: str of strs
  */
 void free(char **pp)
