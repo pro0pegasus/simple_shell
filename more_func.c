@@ -56,7 +56,7 @@ int _atoi(char *st)
 		{
 			fl = 1;
 			res *= 10;
-			res += (s[j] - '0');
+			res += (st[j] - '0');
 		}
 		else if (fl == 1)
 			fl = 2;

@@ -17,9 +17,7 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *leng)
 		free(*buff);
 		*buff = NULL;
 		signal(SIGINT, siginthandle);
-#if USE_GETLINE
 		r = getline(buff, &leng_p, stdin);
-#else
 		r = _getline(inf, buff, &leng_p);
 		if (r == -1 && inf->startup_fd > -1)
 		{
@@ -27,7 +25,6 @@ ssize_t input_buff(info_t *inf, char **buff, size_t *leng)
 			inf->startup_fd = -1;
 			r = _getline(inf, buff, &leng_p);
 		}
-#endif
 		if (r >= 0)
 		{
 			if (inf->hdoc)
