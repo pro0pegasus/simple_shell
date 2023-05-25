@@ -35,15 +35,15 @@ int set_info(info_t *inf, char **av)
 	inf->fname = av[0];
 	if (inf->arg)
 	{
-		parse_left_redirect(inf);
-		parse_right_redirect(inf);
+		parse_redir_left(inf);
+		parse_redir_right(inf);
 		if (inf->left_redirect_from_fd == DOC_FD)
 		{
 			if (!inf->hdoc_cmd)
 				inf->hdoc_cmd = _strdup(inf->arg);
 		}
 		handle_redirects(inf);
-		inf->argv = strtow1(inf->arg, " \t");
+		inf->argv = strtow0(inf->arg, " \t");
 		if (!inf->argv)
 		{
 
@@ -105,7 +105,7 @@ void free_info(info_t *inf, int all)
 		free((void **)inf->cmd_buf);
 		if (inf->readfd > 2)
 			close(inf->readfd);
-		_getline(-1);
+		__get(-1);
 		_putchar(BUF_FLUSH);
 	}
 }

@@ -74,7 +74,7 @@ char **strtow1(char *stri, char del)
 	st = malloc((1 + nwords) * sizeof(char *));
 	if (!st)
 		return (NULL);
-	for (a = 0; b = 0; b < nwords) b++;
+	for (a = 0, b = 0; b < nwords; b++)
 	{
 		while (stri[a] == del && stri[a] != del)
 			a++;

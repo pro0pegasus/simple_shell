@@ -104,7 +104,7 @@ ssize_t read_buff(info_t *inf, char *buff, size_t *s)
 
 	if (*s)
 		return (0);
-	r = read(inf->readfileD, buff, READ_BUF_SIZE);
+	r = read(inf->readfd, buff, READ_BUF_SIZE);
 	if (r >= 0)
 		*s = r;
 	return (r);
@@ -122,7 +122,7 @@ int _getline(info_t *inf, char **pter, size_t *leng)
 	size_t r;
 
 	(void) leng;
-	*pter = _getline(inf->startup_fd > -1 ? inf->startup_fd : inf->readfileD);
+	*pter = __get(inf->startup_fd > -1 ? inf->startup_fd : inf->readfd);
 	if (!*pter)
 		r = -1;
 	else
