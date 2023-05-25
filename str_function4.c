@@ -17,13 +17,13 @@ char **strtow0(char *stri, char *del)
 	if (!del)
 		del = " ";
 	for (a = 0; stri[a] != '\0'; a++)
-		if (!is_deli(st[a], del) && (is_deli(stri[a + 1], del) || !str[a + 1]))
+		if (!is_deli(st[a], del) && (is_deli(st[a + 1], del) || !st[a + 1]))
 			nwords++;
 
 	if (nwords == 0)
 		return (NULL);
 	st = malloc((1 + nwords) * sizeof(char *));
-	if (!str)
+	if (!st)
 		return (NULL);
 	for (a = 0, b = 0; b < nwords; b++)
 	{
@@ -74,7 +74,7 @@ char **strtow1(char *stri, char del)
 	st = malloc((1 + nwords) * sizeof(char *));
 	if (!st)
 		return (NULL);
-	for (a = 0 b = 0; b < nwords; b++)
+	for (a = 0; b = 0; b < nwords) b++;
 	{
 		while (stri[a] == del && stri[a] != del)
 			a++;
@@ -90,9 +90,9 @@ char **strtow1(char *stri, char del)
 			return (NULL);
 		}
 		for (d = 0; d < c; d++)
-			s[b][d] = stri[a++];
-		s[b][d] = 0;
+			st[b][d] = stri[a++];
+		st[b][d] = 0;
 	}
-	s[b] = NULL;
+	st[b] = NULL;
 	return (st);
 }

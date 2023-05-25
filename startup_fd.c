@@ -46,6 +46,6 @@ void read_startup_fd(info_t *inf)
 		return;
 	*buf = 0;
 	sprintf(buf, "%s/%s", _getenv(inf, "HOME="), START_FILE);
-	inf->startup_fd = open_file(inf, buf, 1);
+	inf->startup_fd = open_fle(inf, buf, 1);
 	free(buf);
 }
