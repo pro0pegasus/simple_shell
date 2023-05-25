@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * open_file -It opens a file descriptor,it exits on failure
- * @info: parameter struct
- * @name: name of file to make it open
- * @silent: if true do not print errs
+ * open_fle -It opens a file descriptor,it exits on failure
+ * @inf: parameter struct
+ * @nom: name of file to make it open
+ * @silence: if true do not print errs
  * Return: fd of file
  */
-int open_file(info_t *inf, char *nom, int silence)
+int open_fle(info_t *inf, char *nom, int silence)
 {
 	int fd;
 
@@ -31,8 +31,8 @@ int open_file(info_t *inf, char *nom, int silence)
 }
 
 /**
- * read_startup_file -It reads the startup file
- * @info: parameter struct
+ * read_startup_fd - It reads the startup file
+ * @inf: parameter struct
  */
 void read_startup_fd(info_t *inf)
 {
