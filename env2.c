@@ -2,7 +2,7 @@
 
 /**
  * get_environ - It returns the str array copy of the env
- * @info: The structure contains potential args. It is Used to maintain
+ * @inf: The structure contains potential args. It is Used to maintain
  *          constant func prototype.
  * Return: Always 0
  */
@@ -19,7 +19,7 @@ char **get_environ(info_t *inf)
 
 /**
  * _unsetenv - Remove the env var
- * @info: The structure contains potential args. It is Used to maintain
+ * @inf: The structure contains potential args. It is Used to maintain
  *        constant func prototype.
  *  Return: 1 delete, 0 otherwise
  * @var: the str env var property
@@ -52,7 +52,7 @@ int _unsetenv(info_t *inf, char *var)
 /**
  * _setenv - It Initializes a new env var,
  *             or modify an existing one
- * @info: The structure contains potential args. It is used to maintain
+ * @inf: The structure contains potential args. It is used to maintain
  *        constant func prototype.
  * @var: str env var property
  * @value: string env var value
@@ -94,7 +94,7 @@ int _setenv(info_t *inf, char *var, char *value)
 
 /**
  * print_prompt - It prints PS1 if exists
- * @info: info structure
+ * @inf: info structure
  * Return: void
  */
 void print_prompt(info_t *inf)

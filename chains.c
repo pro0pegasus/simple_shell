@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * is_chain - test if current charcter in buffer is a chain delimet
- * @info: parameter struct
+ * chain - test if current charcter in buffer is a chain delimet
+ * @inf: parameter struct
  * @buf: char buffer
  * @p: address of curr position in buffer
  *
@@ -46,7 +46,7 @@ int chain(info_t *inf, char *buf, size_t *p)
 
 /**
  * check_chain - The checks should continue chaining based on last stats
- * @info: parameter struct
+ * @inf: parameter struct
  * @buf: char buffer
  * @p: address of current position in buffer
  * @i: starting position in buffer
@@ -86,8 +86,8 @@ void check_chain(info_t *inf, char *buf, size_t *p, size_t i, size_t len)
 }
 
 /**
- * replace_alias - It replaces an aliases in the tokenized str
- * @info: parameter struct
+ * repl_alias - It replaces an aliases in the tokenized str
+ * @inf: parameter struct
  *
  * Return: 1 if replaced, 0 otherwise
  */
@@ -115,8 +115,8 @@ int repl_alias(info_t *inf)
 }
 
 /**
- * replace_vars - It replaces vars in the tokenized str
- * @info: parameter struct
+ * repl_var - It replaces vars in the tokenized str
+ * @inf: parameter struct
  *
  * Return: 1 if replaced, 0 otherwise
  */
@@ -156,7 +156,7 @@ int repl_var(info_t *inf)
 }
 
 /**
- * replace_string - replaces str
+ * repl_str - replaces str
  * @old: address of old str
  * @new: new string
  *
