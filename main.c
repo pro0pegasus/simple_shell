@@ -23,5 +23,5 @@ int main(int ac, char **av)
 	read_hist(inf);
 	read_startup_fd(inf);
 	shell(inf, av);
-	return (EXIST_SUCCESS);
+	return (EXIT_SUCCESS);
 }

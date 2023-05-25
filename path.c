@@ -45,7 +45,7 @@ char *dupl_char(char *pstri, int stopp, int star)
  * @inf: the struct of the info
  * Return: NULL or the path of the command
  */
-char *find_path(info_t *inf, char cmd, char *pstri)
+char *find_path(info_t *inf, char *cmd, char *pstri)
 {
 	int j = 0, posi_cur = 0;
 	char *path;

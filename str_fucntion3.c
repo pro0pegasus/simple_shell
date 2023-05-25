@@ -81,10 +81,10 @@ char *_strchlast(char *c, char s)
 {
 	char *re = NULL, *pe;
 
-	while ((pe = _strchr(s, c)))
+	while ((pe = _strchr(c, s)))
 	{
 		re = pe;
-		s = pe + 1;
+		c = pe + 1;
 	}
 	return (re);
 }

@@ -25,7 +25,7 @@ int shell(info_t *inf, char **av)
 			{
 				builtin_ret = find_bltin(inf);
 				if (builtin_ret == -1)
-					find_cmd(inf);
+					find_command(inf);
 			} else
 				builtin_ret = -3;
 		}
@@ -58,7 +58,7 @@ int shell(info_t *inf, char **av)
 int find_bltin(info_t *inf)
 {
 	int i, blt_in_ret = -1;
-	bltin_table bltintbl[] = {
+	B_table bltintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -72,11 +72,11 @@ int find_bltin(info_t *inf)
 
 	if (inf->hdoc)
 		return (0);
-	for (i = 0; bltintbl[i].type; i++)
-		if (_strcmp(inf->argv[0], bltintbl[i].type) == 0)
+	for (i = 0; bltintbl[i].typeB; i++)
+		if (_strcmp(inf->argv[0], bltintbl[i].typeB) == 0)
 		{
 			inf->line_count++;
-			blt_in_ret = bltintbl[i].func(inf);
+			blt_in_ret = bltintbl[i].function(inf);
 			break;
 		}
 	return (blt_in_ret);
@@ -114,7 +114,7 @@ void find_command(info_t *inf)
 	else
 	{
 		if ((intractive(inf) || _getenv(inf, "PATH=")
-			|| inf->argv[0][0] == '/') && find_command(inf, inf->argv[0]))
+			|| inf->argv[0][0] == '/') && is_command(inf, inf->argv[0]))
 			fork_command(inf);
 		else if (*(inf->arg) != '\n')
 		{

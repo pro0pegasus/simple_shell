@@ -25,7 +25,7 @@
 #define CMD_CHAIN 3
 #define CMD_PIPE 4
 
-#define STARTUP_FILECONVERT_LOWERCASE 1
+#define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
 #define USE_GETLINE 0
@@ -166,7 +166,7 @@ void help2_pwd(info_t *);
 /* string_functions_error.c */
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int *fd);
+int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 /* str_functions.c */
@@ -194,9 +194,9 @@ char **strtow1(char *, char);
 /* memo_func.c */
 char *_memcpy(char *dest, char *src, unsigned int n);
 char *_memset(char *, char, unsigned int);
-void ffree(char **);
+void bfree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-int bfree(void **);
+int ffree(void **);
 
 /* more_func.c */
 int intractive(info_t *);
