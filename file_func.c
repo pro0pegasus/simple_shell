@@ -6,12 +6,11 @@
  *
  * Return: allocated str containg hist file
  */
-
-char *get_historyf(info_t *info)
+char *get_historyf(info_t *inf)
 {
 	char *buf, *dir;
 
-	dir = _getenv(info, "HOME=");
+	dir = _getenv(inf, "HOME=");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HDOC_FILE) + 2));
@@ -60,7 +59,7 @@ int write_hist(info_t *inf)
  *
  * Return: histcount on success, 0 otherwise
  */
-int read_history(info_t *inf)
+int read_hist(info_t *inf)
 {
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
@@ -97,7 +96,7 @@ int read_history(info_t *inf)
 		build_hist_lst(inf, buf + last, linecount++);
 	free(buf);
 	inf->Hcount = linecount;
-	while (inf->Hcount-- >= INT_MAX)
+	while (info->Hcount-- >= INT_MAX)
 		del_node_ind(&(inf->history), 0);
 	read_hist(inf);
 	return (inf->Hcount);
