@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _myhistory - It displays history list, one cmd by line, preceded
+ * _myhist - It displays history list, one cmd by line, preceded
  *              with line nums, starting at 0.
  * @info: The structure contains potential args. Used to maintain
  *        constant func prototype.
  *  Return: Always 0
  */
-int _myhistory(info_t *info)
+int _myhist(info_t *info)
 {
 	print_lst(info->history);
 	return (0);
