@@ -99,7 +99,7 @@ int repl_alias(info_t *inf)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = starts_with(inf->alias, inf->argv[0], '=');
+		node = node_start(inf->alias, inf->argv[0], '=');
 		if (!node)
 			return (0);
 		free(inf->argv[0]);
@@ -132,24 +132,24 @@ int repl_var(info_t *inf)
 
 		if (!_strcmp(inf->argv[i], "$?"))
 		{
-			repl_var(&(inf->argv[i]),
+			repl_str(&(inf->argv[i]),
 				_strdup(convert_num(inf->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(inf->argv[i], "$$"))
 		{
-			repl_var(&(inf->argv[i]),
+			repl_str(&(inf->argv[i]),
 				_strdup(convert_num(getpid(), 10, 0)));
 			continue;
 		}
-		node = starts_with(inf->env, &inf->argv[i][1], '=');
+		node = node_start(inf->env, &inf->argv[i][1], '=');
 		if (node)
 		{
-			repl_var(&(inf->argv[i]),
+			repl_str(&(inf->argv[i]),
 				_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		repl_var(&inf->argv[i], _strdup(""));
+		repl_str(&inf->argv[i], _strdup(""));
 
 	}
 	return (0);
