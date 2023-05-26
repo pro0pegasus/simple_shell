@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * error_not_found - Printing custom error for not found command
- * @arvs: command-line args
- * @array_of_tokens: tokenized array of strings
+ * error_not_found - Print custom err for not found cmd
+ * @arvs: cmd-line args
+ * @array_of_tokens: tokenized array of strs
  * @command_num: counter
  *
  * Return: void

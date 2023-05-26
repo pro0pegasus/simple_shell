@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
- * listtoken_len - returns number of elements
- * @head: points to the first node
+ * listtoken_len - returns num of elements
+ * @head: it points to the first node
  *
- * Return: the number of elements in a linked listtoken_t list
+ * Return: the num of elements in linked listtoken_t lst
  */
 size_t listtoken_len(const listtoken_t *head)
 {

@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * is_valid_path - short description
+ * is_valid_path - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @filename: string
+ * @filename: str
  *
- * Return: 1 is executable 0 is non executable
+ * Return: 1 is execu 0 is non execu
  */
 int is_valid_path(char *filename)
 {
@@ -26,14 +26,14 @@ int is_valid_path(char *filename)
 }
 
 /**
- * filepath_creator - short description
+ * filepath_creator - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @file_path: argument_1 description
- * @array_of_tokens: argument_2 description
- * @filename: file name string
- * @token_index: index to copy
+ * @file_path: arg_1 descrip
+ * @array_of_tokens: arg_2 descrip
+ * @filename: file name str
+ * @token_index: index to cpy
  *
  * Return: void
  */
@@ -50,13 +50,13 @@ void filepath_creator(char **file_path, char **array_of_tokens,
 }
 
 /**
- * _which - short description
+ * _which - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @filename: argument_1 description
+ * @filename: arg_1 descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 char *_which(char *filename)
 {

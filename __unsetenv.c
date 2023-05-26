@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _unsetenv - short description
+ * _unsetenv - a short descrip
  *
- * Description: log description
+ * Description: a log descrip
  *
- * @name: argument_1 description
+ * @name: arg_1 descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 int _unsetenv(const char *name)
 {

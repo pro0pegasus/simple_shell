@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * is_builtin - short description
+ * is_builtin - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @array_of_tokens: command array
+ * @array_of_tokens: cmd array
  *
  * Return: 1 if success 0 if failure
  */
@@ -32,11 +32,11 @@ int is_builtin(char **array_of_tokens)
 }
 
 /**
- * builin_handler - short description
+ * builin_handler - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @array_of_tokens: command array
+ * @array_of_tokens: cmd array
  *
  * Return: 1 if success 0 if failure
  */

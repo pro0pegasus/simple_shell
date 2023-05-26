@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * number_of_tokens - function that  returns the number of tokens in a string
+ * number_of_tokens - func returns the num of tokens in str
  *
- * Description: function that  returns the number of tokens in a string
+ * Description: func returns the num of tokens in str
  *
- * @input: input string
- * @delimiter: delimiter string
+ * @input: input str
+ * @delimiter: delimiter str
  *
- * Return: -1 if failure and a number if not
+ * Return: -1 if failure and a num if not
  */
 size_t number_of_tokens(char *input, char *delimiter)
 {
@@ -25,14 +25,14 @@ size_t number_of_tokens(char *input, char *delimiter)
 	return (token_count);
 }
 /**
- * array_maker - function creates a NULL terminated array of a string delimited
+ * array_maker - func creates a NULL terminates array of a str delimited
  *
- * Description: function creates a NULL terminated array of a string delimited
+ * Description: func creates a NULL terminates array of a str delimited
  *
- * @input: input string
- * @delimiter: delimiter string
+ * @input: input str
+ * @delimiter: delimiter str
  *
- * Return: returns NULL on failure and the array on success
+ * Return: returns 0 on failure or an array on success
  */
 char **array_maker(char *input, char *delimiter)
 {

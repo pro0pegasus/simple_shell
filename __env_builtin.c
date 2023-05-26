@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _env_builtin - print enviroment
+ * _env_builtin - print env
  *
- * @array_of_tokens: command array
+ * @array_of_tokens: cmd array
  *
- * Return: 0 for failure 1 for Sucess
+ * Return: 0  failure 1  Sucess
  */
 int _env_builtin(__attribute((unused)) char **array_of_tokens)
 {

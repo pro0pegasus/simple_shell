@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * _getenv - short description
+ * _getenv - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @name: argument_1 description
+ * @name: arg_1 descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 char *_getenv(const char *name)
 {

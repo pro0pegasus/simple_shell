@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _exit_builtin - builtin exit
+ * _exit_builtin - exit builtin
  *
- * @array_of_tokens: command array
+ * @array_of_tokens: cmd array
  *
- * Return: 0 if failure 1 if sucess
+ * Return: 0 failure 1 sucess
  */
 int _exit_builtin(char **array_of_tokens)
 {

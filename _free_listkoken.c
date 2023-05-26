@@ -1,9 +1,9 @@
 #include "lists.h"
 
 /**
- * free_listtoken - frees a listtoken_t list
+ * free_listtoken - it frees listtoken_t lst
  *
- * Description: free a listtoken_t list
+ * Description: it frees listtoken_t lst
  *
  * @head: points to a pointer that points to the first node
  *

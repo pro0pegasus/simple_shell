@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * _getline - short description
+ * _getline - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @input: description
- * @number_of_malloc_bytes_allocated: description
- * @status: the exit status
+ * @input: descrip
+ * @number_of_malloc_bytes_allocated: descrip
+ * @status: exit status
  *
- * Return: -1 on failure greater than 0 on success
+ * Return: -1 on failure, 0 on success
  */
 ssize_t _getline(char **input,
 		size_t *number_of_malloc_bytes_allocated, int status)

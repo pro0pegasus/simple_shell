@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * free_main - free array of tokens in the main function
- * @array_of_tokens: tokenized string
- * @input: string
+ * free_main - the array is freed of tokens in the main func
+ * @array_of_tokens: tokenized str
+ * @input: str
  *
  * Return: void
  */
@@ -18,14 +18,14 @@ void free_main(char **array_of_tokens, char *input)
 }
 
 /**
- * free_which - short description
+ * free_which - short descrip
  *
- * Description: long description
+ * Description: long descrip
  *
- * @path_var: argument_1 description
- * @array_of_tokens: argument_2 description
+ * @path_var: arg_1 descrip
+ * @array_of_tokens: arg_2 descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 void free_which(char **path_var, char **array_of_tokens)
 {

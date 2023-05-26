@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * digit_counter - counts the digit
- * @command_num: the number to be counted
+ * digit_counter - it counts digit
+ * @command_num: num to be counted
  *
- * Return: the number of the digits
+ * Return: num of the digits
  */
 int digit_counter(size_t command_num)
 {

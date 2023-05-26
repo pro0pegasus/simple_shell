@@ -1,16 +1,16 @@
 #include "main.h"
 
 /**
- * create_envar - short description
+ * create_envar - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @env_var: argument_1 description
- * @envar_length: argument_2 description
- * @name: name string
- * @value: value string
+ * @env_var: arg_1 descrip
+ * @envar_length: arg_2 descrip
+ * @name: name str
+ * @value: value str
  *
- * Return: return description
+ * Return: return descrip
  */
 void create_envar(char **env_var, unsigned int envar_length, const char *name,
 		const char *value)
@@ -27,16 +27,16 @@ void create_envar(char **env_var, unsigned int envar_length, const char *name,
 }
 
 /**
- * _env_set_exists - short description
+ * _env_set_exists - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @env_var: argument_1 description
- * @envar_length: argument_2 description
- * @name: name string
- * @overwrite: overwrite integer
+ * @env_var: arg_1 descrip
+ * @envar_length: arg_2 descrip
+ * @name: name str
+ * @overwrite: overwrite intg
  *
- * Return: return description
+ * Return: return descrip
  */
 int _env_set_exists(char *env_var, unsigned int envar_length, const char *name,
 		int overwrite)
@@ -64,15 +64,15 @@ int _env_set_exists(char *env_var, unsigned int envar_length, const char *name,
 }
 
 /**
- * env_does_not_exists - short description
+ * env_does_not_exists - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @env_var: argument_1 description
- * @envar_length: argument_2 description
- * @env_length: length of enviroment
+ * @env_var: arg_1 descrip
+ * @envar_length: arg_2 descrip
+ * @env_length: length of env
  *
- * Return: return description
+ * Return: return descrip
  */
 int env_does_not_exists(char *env_var, unsigned int envar_length,
 		unsigned int env_length)
@@ -107,20 +107,20 @@ int env_does_not_exists(char *env_var, unsigned int envar_length,
 }
 
 /**
- * _setenv - short description
+ * _setenv - a short descrip
  *
- * Description: The setenv() function adds the variable name to the
- * environment with the value value, if name does not already exist.
- * If name does exist in the environment, then its value is changed
- * to value if overwrite is  nonzero;  if overwrite is zero, then the
- * value of name is not changed (and setenv() returns a suc-cess status).
- * This function makes copies of the strings pointed to by name  and
- * value  (by  contrast with putenv(3)). The unsetenv() function deletes
- * the variable name from the environment. If name does not exist in the
- * environment, then the function succeeds, and the environment is unchanged.
+ * Description: The setenv() func adds a var name to the
+ * env with the value, if name does not already exist.
+ * If name exists in the env, its value is changed
+ * to value if overwrite is  not a zero; if overwrite is 0, then the
+ * value the name isn't changed.
+ * This funct makes copies of the strs pointed to by a name, and
+ * the value. The unsetenv() func deletes
+ * the var name from the envir. If name exists in the
+ * envi, the func succeeds, the env is unchanged.
  *
- * @name: name string
- * @value: value string
+ * @name: name str
+ * @value: value str
  * @overwrite: overwrite intger
  *
  * Return: -1 on failure 0 on success

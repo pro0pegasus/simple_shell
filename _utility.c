@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * malloc_char - short description
+ * malloc_char - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @string: reference to string
+ * @string: reference to str
  * @size_of_malloc: int size of malloc
- * @error_message: string error message
+ * @error_message: str err msg
  *
- * Return: return description
+ * Return: return descrip
  */
 char *malloc_char(char **string, size_t size_of_malloc, char *error_message)
 {
@@ -23,15 +23,15 @@ char *malloc_char(char **string, size_t size_of_malloc, char *error_message)
 }
 
 /**
- * malloc_array - short description
+ * malloc_array - short descrip
  *
- * Description: long description
+ * Description: long descrip
  *
- * @array: reference to string
+ * @array: reference to str
  * @size_of_malloc: int size of malloc
- * @error_message: string error message
+ * @error_message: str err msg
  *
- * Return: return description
+ * Return: return descrip
  */
 char **malloc_array(char **array, size_t size_of_malloc, char *error_message)
 {
@@ -45,14 +45,14 @@ char **malloc_array(char **array, size_t size_of_malloc, char *error_message)
 }
 
 /**
- * copy_array - short description
+ * copy_array - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @destination: argument_1 description
- * @source: argument_2 description
+ * @destination: arg_1 descrip
+ * @source: arg_2 descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 int copy_array(char **destination, char **source)
 {
@@ -77,13 +77,13 @@ int copy_array(char **destination, char **source)
 }
 
 /**
- * _env_name_exists - short description
+ * _env_name_exists - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @name: name string
+ * @name: name str
  *
- * Return: return description
+ * Return: return descrip
  */
 int _env_name_exists(const char *name)
 {
@@ -97,11 +97,11 @@ int _env_name_exists(const char *name)
 }
 
 /**
- * _env_length - short description
+ * _env_length - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 int _env_length(void)
 {

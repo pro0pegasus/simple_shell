@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * prompt - short description
+ * prompt - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * Return: -1 on failure greater than 0 on success
+ * Return: -1 on failure, 0 on success
  */
 void prompt(void)
 {

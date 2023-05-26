@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * sigint_handler - handle signals
- * @signal: signal
+ * sigint_handler - handles sigs
+ * @signal: sig
  *
  * Return: nothing
  */

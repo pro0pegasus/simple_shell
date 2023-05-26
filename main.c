@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * main - short description
+ * main - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @ac: argument_1 description
- * @arvs: argument_2 description
- * @envp: argument_3 desctiontion
+ * @ac: arg_1 descrip
+ * @arvs: arg_2 descrip
+ * @envp: arg_3 desct
  *
  * Return: return description
  */

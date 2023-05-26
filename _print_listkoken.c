@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 /**
- * print_listtoken - prints all the elements of a listtoken_t list
- * @head: points to the first node
+ * print_listtoken - prints all listtoken_t lst elements
+ * @head: points the first node
  *
- * Return: the number of nodes
+ * Return: num of nodes
  */
 size_t print_listtoken(const listtoken_t *head)
 {

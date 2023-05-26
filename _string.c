@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * rev_string - reverses a string
- * @str: the string
+ * rev_string - revs a str
+ * @str: str
  *
  * Return: void
  */
@@ -24,10 +24,10 @@ void rev_string(char *str)
 }
 
 /**
- * _itoa - converts int to a string
- * @command_num: number to convert
+ * _itoa - it converts int to a str
+ * @command_num: num to convert
  *
- * Return: the converted integer
+ * Return: converted int
  */
 char *_itoa(size_t command_num)
 {

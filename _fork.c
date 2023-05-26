@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * _fork - short description
+ * _fork - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * @array_of_tokens: argument_1 description
- * @command: string command
+ * @array_of_tokens: arg_1 descrip
+ * @command: str cmd
  *
- * Return: return description
+ * Return: return descrip
  */
 int _fork(char *command, char **array_of_tokens)
 {
