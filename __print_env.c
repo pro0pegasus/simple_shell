@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _print_env - short description
+ * _print_env - a short descrip
  *
- * Description: long description
+ * Description: a long descrip
  *
- * Return: return description
+ * Return: return descrip
  */
 int _print_env(void)
 {
